@@ -211,7 +211,7 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 1. Schrijf in `users.txt` een gesorteerde lijst weg van gebruikers met een UID strikt groter dan 1000 (tip: gebruik hiervoor `awk`).
 
     ```
-    $ COMMANDO
+    $ awk -F: '{ if($3 > 1000) print $1}' /etc/passwd | sort > users.txt
     $ cat users.txt
     roberts
     ryu
@@ -224,20 +224,20 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 2. Tel het aantal gebruikers in `users.txt`
 
     ```
-    $ COMMANDO
+    $ wc -l
     UITVOER
     ```
 
 3. Genereer voor elke gebruiker in `users.txt` een nieuw wachtwoord m.h.v. het commando `apg -n AANTAL` en schrijf deze weg in `newpass.txt`. Het aantal gebruikers in `users.txt` wordt berekend in de opdrachtregel.  Tip: gebruik "command substitution," notatie `$(commando)`. Dit zal het gegeven commando uitvoeren en de uitdrukking `$(...)` vervangen door de uitvoer (stdout) ervan.
 
     ```
-    $ COMMANDO
+    $ apg -n AANTAL > newpass.txt
     ```
 
 4. Maak een tekstbestand `newusers.txt` met daarin de lijst van gebruikers uit `users.txt` en hun overeenkomstige wachtwoord uit `newpass.txt`, gescheiden door een TAB, vb:
 
     ```
-    $ COMMANDO
+    $ paste users.txt newpass.txt > newusers.txt
     $ cat newusers.txt
     roberts hewpopIrb6
     ryu     vicNimEp
@@ -250,7 +250,7 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 5. Converteer `newusers.txt` naar een CSV-bestand `newusers.csv` waar de inhoud van elke kolom omgeven is door dubbele aanhalingstekens en gescheiden door een kommapunt.
 
     ```
-    $ COMMANDO
+    $ awk '{printf ("\"%s\";\"%s\"\n",$1,$2)}' newusers.txt > newusers.csv
     $ cat newusers.csv
     "roberts";"hewpopIrb6"
     "ryu";"vicNimEp"
@@ -263,7 +263,7 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 6. Druk een lijst af van de gebruikers in `passwd` die Bash als shell hebben, samen met hun UID en home-directory. Sorteer op UID.
 
     ```
-    $ COMMANDO
+    $ grep 'bin/bash$' /etc/passwd | sort -t: -n -k3 | cut -d: -f1,3,6
     root:0:/root
     vagrant:1000:/home/vagrant
     student:1001:/home/student
