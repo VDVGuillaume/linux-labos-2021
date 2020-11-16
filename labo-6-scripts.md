@@ -58,7 +58,7 @@ else
      echo "Geen argumenten opgegeven!" >&2
         exit 1
 fi
-    ```
+```
 
 2. Schrijf een script `gebruikerslijst.sh` dat een gesorteerde lijst van users (uit `/etc/passwd`) weergeeft op het scherm. Maak gebruik van het het commando `cut`.
 ```bash
