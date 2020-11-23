@@ -108,10 +108,10 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
     read FILE
 
     # Create file
-    touch "$FILE"
+    touch "${FILE}"
 
     # Permissions
-    chmod u+rwx "$FILE"
+    chmod u+rwx "${FILE}"
     ```
 
 6. Dit script zal een bestand kopiëren. Bron en doel worden als argumenten meegegeven. Test of het doelbestand bestaat. Indien wel, wordt het script afgebroken. (Opm. geen unit tests voor deze oefening)
@@ -122,12 +122,12 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
     DOEL="$2"
 
     # Test bestaat doel reeds
-    if [ -f "$DOEL" ]; then
-            echo "$DOEL bestaat al!"
+    if [ -f "${DOEL}" ]; then
+            echo "${DOEL} bestaat al!"
             exit 1
     fi
 
-    cp "$FILE" "$DOEL"
+    cp "${FILE}" "${DOEL}"
     ```
 
 7. Sorteer de inhoud van een bestand (arg1) en toon de laatste regels (aantal regels = arg2). Indien argument 1 ontbreekt, melding geven en afbreken. Indien argument 2 ontbreekt neemt men 20 als default waarde. Om te testen maak je een bestand aan met alle letters van het alfabet, in de volgorde van je toetsenbord. (Opm. geen unit tests voor deze oefening)
@@ -136,8 +136,8 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
 
     FILE="$1"
 
-    if [! -f "$FILE" ]; then
-            echo "$FILE is geen bestand of bestaat niet!"
+    if [! -f "${FILE}" ]; then
+            echo "${FILE} is geen bestand of bestaat niet!"
             exit 1
     fi
 
@@ -147,7 +147,7 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
             REGELS=20
     fi
 
-    echo "$(sort $FILE | tail -n $REGELS)"
+    echo "$(sort ${FILE} | tail -n ${REGELS})"
     ```
 
 8. Dit script moet testen of een bestand (opvragen aan gebruiker) bestaat en uitvoerbaar is, indien niet, moet het uitvoerbaar gemaakt worden.
@@ -171,34 +171,44 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
 
 9. Dit script maakt gebruik van het cal (kalender commando). De gebruiker wordt verplicht om de drie eerste letters van de maand (jan-feb-maa-apr-mei-jun-jul-aug-sep-okt-nov-dec) in te geven. Geef foutmelding indien geen correcte maand wordt ingegeven en stop het script. De gebruiker kan ook het jaartal ingeven (niet verplicht). Indien niet ingegeven wordt het huidige jaar gebruikt.
     ```bash
+    #/bin/bash
 
+    clear
+
+    MAAND=""
+
+    while [ -z "${MAAND}" ]; do
+            echo -n "Geef de drie eerste letters van een maand in?"
+            echo
+        read MAAND
+    done
+
+    echo -n "Geef een jaartal in? (Optioneel)"
+    echo
+    read JAAR
+
+    if [ -z "${JAAR}" ]; then
+            JAAR=$(date +%Y)        # +%Y format geeft enkel jaar
+    fi
+
+    case ${MAAND} in
+            jan) MON=1;;
+            feb) MON=2;;
+            maa) MON=3;;
+            apr) MON=4;;
+            mei) MON=5;;
+            jun) MON=6;;
+            jul) MON=7;;
+            aug) MON=8;;
+            sep) MON=9;;
+            okt) MON=10;;
+            nov) MON=11;;
+            dec) MON=12;;
+            *) echo "Foutieve maand";
+                    exit;;
+    esac
+
+    cal ${MON} ${JAAR}
     ```
-
----
-
-10. Schrijf een script `passphrase.sh` dat een willekeurige wachtwoordzin genereert zoals gesuggereerd door <http://xkcd.com/936/>. Gebruik een woordenlijst zoals `/usr/share/dict/words` (moet je mogelijks installeren). Opties en argumenten:
-    - `passphrase.sh [-h|-?|--help]`: druk uitleg over het commando af en sluit af met exit-status 0. Eventuele andere opties en argumenten worden genegeerd.
-    - `passphrase.sh [N] [WORDS]`
-        - N = het aantal woorden in de wachtwoordzin (standaardwaarde = 4)
-        - WORDS = het bestand dat de te gebruiken woordenlijst bevat (standaardwaarde = `/usr/share/dict/words`)
-    - Sluit af met een passende foutboodschap (op stderr!) en exit-status als:
-        - er meer dan twee parameters gegeven werden
-        - WORDS niet bestaat of niet leesbaar is
-    - Tip: met het commando `shuf` kan je de volgorde van lijnen tekst door elkaar schudden.
-11. Schrijf een script om een backup te maken van de gegeven directory, meer bepaald een Tar-archief gecomprimeerd met bzip2.
-    - Het archief krijgt als naam DIRECTORY-TIMESTAMP.tar.bzip2 met:
-        - DIRECTORY = de naam van de directory waarvan je een backup maakt
-        - TIMESTAMP = de huidige datum/tijd in het formaat JJJJMMDDUUMM
-        - vb. “student-201312021825.tar.bzip2” voor directory /home/student
-    - Er wordt in dezelfde directory als het archief een log weggeschreven naar een bestand backup-TIMESTAMP.log van de uitvoer (zowel stdout als stderr) van het tar-commando.
-    - Gebruik: `backup.sh [OPTIES] [DIR]`
-    - Opties en argumenten:
-        - `-h|-?|--help`: druk uitleg over het commando af en sluit af met exit-status 0. Eventuele andere opties en argumenten worden genegeerd.
-        - `-d|--destination DIR`: de directory waar de backup naartoe geschreven moet worden. Standaardwaarde is `/tmp`
-        - `DIR` de directory waarvan er een backup gemaakt moet worden. Standaardwaarde is de home-directory van de huidige gebruiker.
-    - Sluit af met een passende foutboodschap (op stderr!) en exit-status als:
-        - er teveel argumenten gegeven worden
-        - de directory waarvan een backup gemaakt moet worden niet bestaat
-        - de directory waar de backup naartoe geschreven moet worden niet bestaat
 
 ## Gebruikte bronnen
