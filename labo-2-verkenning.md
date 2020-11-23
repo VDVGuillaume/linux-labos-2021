@@ -5,22 +5,19 @@
 1. Hoe vraag je op de command-line documentatie op voor het *commando* `passwd`?
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ man passwd
     ```
 
 2. Hoe vraag je documentatie op voor het *configuratiebestand* `/etc/passwd`?
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ man config
     ```
 
 3. Hoe vraag je een lijst op van alle documentatie die de string `passwd` bevat?
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ man -wK passwd
     ```
 
 ## Werken op de command-line
@@ -28,28 +25,28 @@
 1. Wat is de huidige datum en uur?
 
     ```
-    $ COMMANDO
+    $ date
     UITVOER
     ```
 
 2. Wat is de huidige directory?
 
     ```
-    $ COMMANDO
+    $ pwd
     UITVOER
     ```
 
 3. Toon de inhoud van de huidige directory. De uitvoer zou er ongeveer zo moeten uit zien:
 
     ```
-    $ COMMANDO
+    $ ls
     Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
     ```
 
 4. Toon de inhoud van de huidige directory, maar toon voor elk bestand meer informatie en ook "verborgen" bestanden.
 
     ```
-    $ COMMANDO
+    $ ls -la
     total 96
     drwx------. 14 student student 4096 Sep 24 09:14 .
     drwxr-xr-x.  3 root    root    4096 Sep 20 13:46 ..
@@ -68,23 +65,21 @@
 5. Toon de inhoud van de hoofddirectory van het Linux-systeem, ook vaak de root-directory genoemd. Geef een uitgebreide listing zoals in de vorige vraag, maar *zonder* verborgen bestanden.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls -l
     ```
 
 6. Wat betekenen volgende elementen van de uitvoer hierboven?
-    - 1e kolom (bv. `drwxr-xr-x.`): ...
-    - 2e kolom (getal): ...
-    - 3e kolom (bv. `root`, `student`): ...
-    - 4e kolom (bv. `root`): ...
-    - 5e kolom (getal): ...
-    - 6e - 8e kolom (datum): ...
-    - de aanduiding `->` (bv. `bin -> usr/bin`): ...
+    - 1e kolom (bv. `drwxr-xr-x.`): *permissions*
+    - 2e kolom (getal): *aantal directories of links in de directory*
+    - 3e kolom (bv. `root`, `student`): *eigenaar*
+    - 4e kolom (bv. `root`): *groep*
+    - 5e kolom (getal): *grootte in bytes*
+    - 6e - 8e kolom (datum): *datum laaste aanpassing*
+    - de aanduiding `->` (bv. `bin -> usr/bin`): *link referentie*
 7. Hoe kan je commando's die je voordien uitgevoerd hebt terug ophalen (de "commandogeschiedenis")?
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ history
     ```
 
 ## De plaats van bestanden op een Linux-systeem
