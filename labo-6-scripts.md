@@ -46,123 +46,135 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
     1
     ```
     
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-# Print args onder elkaar
-if [[ $# -gt 0 ]]; then
-        for ARG in $@; do
-                echo "${ARG}"
-        done
-else
-     echo "Geen argumenten opgegeven!" >&2
-        exit 1
-fi
-```
+    # Print args onder elkaar
+    if [[ $# -gt 0 ]]; then
+            for ARG in $@; do
+                    echo "${ARG}"
+            done
+    else
+        echo "Geen argumenten opgegeven!" >&2
+            exit 1
+    fi
+    ```
 
 2. Schrijf een script `gebruikerslijst.sh` dat een gesorteerde lijst van users (uit `/etc/passwd`) weergeeft op het scherm. Maak gebruik van het het commando `cut`.
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-# Gesorteerde lijst van users
-echo "$(cut -d: -f 1 /etc/passwd | sort)"
-```
+    # Gesorteerde lijst van users
+    echo "$(cut -d: -f 1 /etc/passwd | sort)"
+    ```
 
 3. Schrijf een script `elf-params.sh` dat werkt zoals `onderelkaar.sh`, maar maximaal 11 parameters afdrukt. Extra parameters worden genegeerd.  Positionele parameters en `shift` zijn een tip.
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-# Print eerste 11 parameters
-COUNTER=0
+    # Print eerste 11 parameters
+    COUNTER=0
 
-while [[ $COUNTER -lt 11 && $# -ne 0 ]]; do
-        echo "$1"
-        COUNTER=$((COUNTER+1))
-        shift
-done
-```
+    while [[ $COUNTER -lt 11 && $# -ne 0 ]]; do
+            echo "$1"
+            COUNTER=$((COUNTER+1))
+            shift
+    done
+    ```
 
 4. Schrijf een script `datum.sh` dat het aantal elementen van het commando `date` weergeeft en daarna al de elementen onder elkaar. Maak gebruik van positionele parameters en het `set` commando. Gebruik ook een `while`-lus.
-```bash
-/bin/bash
+    ```bash
+    /bin/bash
 
-# Print date output onder elkaar
-set $(date)
+    # Print date output onder elkaar
+    set $(date)
 
-echo "Aantal elementen: $#"
-echo
+    echo "Aantal elementen: $#"
+    echo
 
-while [[ $# -gt 0 ]]; do
-        echo "$1"
-        shift
-done
-```
+    while [[ $# -gt 0 ]]; do
+            echo "$1"
+            shift
+    done
+    ```
 
 5. Vraag aan de gebruiker van dit script een naam voor een bestand, schrijf dit vervolgens weg en zorg ervoor dat het bestand uitvoerbaar is. (opm. geen unit tests)
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-clear
-echo -n "Geef naam voor bestand:"
-echo
-read FILE
+    clear
+    echo -n "Geef naam voor bestand:"
+    echo
+    read FILE
 
-# Create file
-touch "$FILE"
+    # Create file
+    touch "$FILE"
 
-# Permissions
-chmod u+rwx "$FILE"
-```
+    # Permissions
+    chmod u+rwx "$FILE"
+    ```
 
 6. Dit script zal een bestand kopiëren. Bron en doel worden als argumenten meegegeven. Test of het doelbestand bestaat. Indien wel, wordt het script afgebroken. (Opm. geen unit tests voor deze oefening)
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-FILE="$1"
-DOEL="$2"
+    FILE="$1"
+    DOEL="$2"
 
-# Test bestaat doel reeds
-if [ -f "$DOEL" ]; then
-        echo "$DOEL bestaat al!"
-        exit 1
-fi
+    # Test bestaat doel reeds
+    if [ -f "$DOEL" ]; then
+            echo "$DOEL bestaat al!"
+            exit 1
+    fi
 
-cp "$FILE" "$DOEL"
-```
+    cp "$FILE" "$DOEL"
+    ```
 
 7. Sorteer de inhoud van een bestand (arg1) en toon de laatste regels (aantal regels = arg2). Indien argument 1 ontbreekt, melding geven en afbreken. Indien argument 2 ontbreekt neemt men 20 als default waarde. Om te testen maak je een bestand aan met alle letters van het alfabet, in de volgorde van je toetsenbord. (Opm. geen unit tests voor deze oefening)
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-FILE="$1"
+    FILE="$1"
 
-if [! -f "$FILE" ]; then
-        echo "$FILE is geen bestand of bestaat niet!"
-        exit 1
-fi
+    if [! -f "$FILE" ]; then
+            echo "$FILE is geen bestand of bestaat niet!"
+            exit 1
+    fi
 
-if [ $# -eq 2  ]; then
-        REGELS="$2"
-else
-    	REGELS=20
-fi
+    if [ $# -eq 2  ]; then
+            REGELS="$2"
+    else
+            REGELS=20
+    fi
 
-echo "$(sort $FILE | tail -n $REGELS)"
-```
+    echo "$(sort $FILE | tail -n $REGELS)"
+    ```
 
 8. Dit script moet testen of een bestand (opvragen aan gebruiker) bestaat en uitvoerbaar is, indien niet, moet het uitvoerbaar gemaakt worden.
-```bash
-#/bin/bash
+    ```bash
+    #/bin/bash
 
-FILE="$1"
+    FILE="$1"
 
-# Test bestand uitvoerbaar
-if [ ! -x "${FILE}" ]; then
-        chmod u+x "${FILE}"
-fi
-```
+    # Test bestaat bestand
+    if [ -e "${FILE}" ]; then
+
+            # Test bestand uitvoerbaar
+            if [ ! -x "${FILE}" ]; then
+
+                    chmod u+x "${FILE}"
+            fi
+    else
+            echo "Bestand bestaat niet!"
+    fi
+    ```
 
 9. Dit script maakt gebruik van het cal (kalender commando). De gebruiker wordt verplicht om de drie eerste letters van de maand (jan-feb-maa-apr-mei-jun-jul-aug-sep-okt-nov-dec) in te geven. Geef foutmelding indien geen correcte maand wordt ingegeven en stop het script. De gebruiker kan ook het jaartal ingeven (niet verplicht). Indien niet ingegeven wordt het huidige jaar gebruikt.
+    ```bash
+
+    ```
+
+---
 
 10. Schrijf een script `passphrase.sh` dat een willekeurige wachtwoordzin genereert zoals gesuggereerd door <http://xkcd.com/936/>. Gebruik een woordenlijst zoals `/usr/share/dict/words` (moet je mogelijks installeren). Opties en argumenten:
     - `passphrase.sh [-h|-?|--help]`: druk uitleg over het commando af en sluit af met exit-status 0. Eventuele andere opties en argumenten worden genegeerd.
