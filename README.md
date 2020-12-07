@@ -1,14 +1,35 @@
-# Besturingssystemen - Linux: labo-opgaven
+# Besturingssystemen - Linux: labo's
 
-In deze repository vind je de labo-oefeningen voor Besturingssystemen/Linux van de opleiding professionele bachelor toegepaste informatica aan de Hogeschool Gent. Het is de bedoeling dat je in deze repository je eigen nota's en oplossingen bijhoudt. In elke labo-opdracht is plaats voorzien voor het noteren van je antwoorden.
+## Inhoud
+1. [Labo 1: Linux installeren](labo-1-installatie.md)
+
+2. [Labo 2: Linux leren kennen](labo-2-verkenning.md)
+
+3. [Labo 3: Werken met tekst](labo-3-tekst.md)
+
+4. [Labo 4: Intro scripting](labo-4-intro-scripts.md)
+
+5. [Labo 5: Bestandspermissies](labo-5-gebruikers-bestandspermissies.md)
+
+6. [Labo 6: Variabelen en scripts](labo-6-scripts.md)
+
+7. [Labo 7: Een webserver opzetten](labo-7-webserver.md)
+
+8. [Labo 8: Complexere scripts](labo-8-complex-scripts.md)
+
+
+
+<!-- ################# OLD README ################# -->
+
+<!-- In deze repository vind je de labo-oefeningen voor Besturingssystemen/Linux van de opleiding professionele bachelor toegepaste informatica aan de Hogeschool Gent. Het is de bedoeling dat je in deze repository je eigen nota's en oplossingen bijhoudt. In elke labo-opdracht is plaats voorzien voor het noteren van je antwoorden.
 
 ## Gegevens student
 
 - Naam: 
 - Klasgroep: 
-- Naam van je lector: Nathalie Declercq / Andy Van Maele / Bert Van Vreckem (schrap wat niet past)
+- Naam van je lector: Nathalie Declercq
 - Github gebruikersnaam: [GEBRUIKER](https://github.com/GEBRUIKER)
-- URL naar je Github-repository: <https://github.com/HoGentTIN/ilnx-GEBRUIKER>
+- URL naar je Github-repository: <https://github.com/HoGentTIN/linux-GEBRUIKER>
 
 ## Verslagen bijhouden
 
@@ -41,6 +62,7 @@ Uitgebreide voorbeelden en motivatie van cheat sheets kan je vinden in deze Gith
 
 ## Vragen/opmerkingen
 
-Mocht je eventueel fouten of onduidelijkheden vinden in de oefeningen, of je hebt voorstellen of ideeën voor verbeteringen, aarzel niet om een [Issue](https://github.com/HoGentTIN/ilnx-labos/issues) te openen.
+Mocht je eventueel fouten of onduidelijkheden vinden in de oefeningen, of je hebt voorstellen of ideeën voor verbeteringen, aarzel niet om een [Issue](https://github.com/HoGentTIN/ilnx-labos/issues) te openen. -->
+
 
 
