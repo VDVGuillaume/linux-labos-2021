@@ -9,13 +9,13 @@
 
 4. [Labo 4: Intro scripting](labo-4-intro-scripts.md)
 
-5. [Labo 5: Bestandspermissies](labo-5-gebruikers-bestandspermissies.md) WIP
+5. [Labo 5: Bestandspermissies](labo-5-gebruikers-bestandspermissies.md) (TODO)
 
 6. [Labo 6: Variabelen en scripts](labo-6-scripts.md)
 
-7. [Labo 7: Een webserver opzetten](labo-7-webserver.md) WIP
+7. [Labo 7: Een webserver opzetten](labo-7-webserver.md) (TODO)
 
-8. [Labo 8: Complexere scripts](labo-8-complex-scripts.md)
+8. [Labo 8: Complexere scripts](labo-8-complex-scripts.md) (TODO)
 
 
 
