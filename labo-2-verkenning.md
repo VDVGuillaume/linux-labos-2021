@@ -26,14 +26,12 @@
 
     ```
     $ date
-    UITVOER
     ```
 
 2. Wat is de huidige directory?
 
     ```
     $ pwd
-    UITVOER
     ```
 
 3. Toon de inhoud van de huidige directory. De uitvoer zou er ongeveer zo moeten uit zien:
@@ -88,20 +86,20 @@ Vul de tabel hieronder aan. In de linkerkolom vind je de namen van een directory
 
 | Directory                         | Inhoud                                                  |
 | :---                              | :---                                                    |
-| `/bin`, `/usr/bin`                | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Uitvoerbare bestanden voor systeembeheertaken           |
-| `/var`                            | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Tijdelijke bestanden                                    |
-| `/opt`, `/usr/local`              | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Home-directory van de `root` gebruiker                  |
-| **`ANTWOORD`**                    | Home-directory van de gebruiker `student`               |
-| **`ANTWOORD`**                    | De inhoud van de man-pages                              |
-| **`ANTWOORD`**                    | Andere documentatie                                     |
-| `/lib`, `/usr/lib`, `lib64`, enz. | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | De inhoud van de installatie-cd voor Guest Additions(*) |
-| `/dev`                            | **ANTWOORD**                                            |
-| `/proc`                           | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Systeemconfiguratiebestanden                            |
+| `/bin`, `/usr/bin`                | Essentiele uitvoerbare bestanden                        |
+| `/sbin`                           | Uitvoerbare bestanden voor systeembeheertaken           |
+| `/var`                            | Bestanden met variable grootte                          |
+| `/tmp`                            | Tijdelijke bestanden                                    |
+| `/opt`, `/usr/local`              | Applicatiesoftware van derden                           |
+| `/root`                           | Home-directory van de `root` gebruiker                  |
+| `/home/student`                   | Home-directory van de gebruiker `student`               |
+| `/usr/share/man`                  | De inhoud van de man-pages                              |
+| `/usr/share/doc`                  | Andere documentatie                                     |
+| `/lib`, `/usr/lib`, `lib64`, enz. | Essentiele libraries                                    |
+| `/media`                          | De inhoud van de installatie-cd voor Guest Additions(*) |
+| `/dev`                            | Bestanden van aangesloten apparaten                     |
+| `/proc`                           | Informatie over lopende processen                       |
+| `etc`                             | Systeemconfiguratiebestanden                            |
 
 (*) Je kan het insteken van de cd simuleren in het VirtualBox-venster van je VM in het menu "Devices" > "Insert Guest Additions CD image..." (of het Nederlandstalige equivalent).
 
@@ -119,36 +117,33 @@ In deze oefening leer je onderscheid maken tussen *relatieve* en *absolute paden
 1. Blijf in je home-directory en maak van hieruit een directory `tijdelijk/` aan onder `/tmp/`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mkdir /tmp/tijdelijk/
     ```
 
 2. Verwijder deze directory meteen
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ rmdir /tmp/tijdelijk/DO
     ```
 
 3. Maak onder je home-directory een submap aan met de naam `linux/`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mkdir linux
     ```
 
 4. Ga naar deze directory
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ cd linux
     ```
 
 5. Maak met één commando de subdirectory `a/b/` aan onder `linux/`. Als je nadien het commando `tree` geeft, moet je de gegeven uitvoer zien.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mkdir -p a/b/
+    ```
+    ```
     $ tree
     .
     └── a
@@ -159,15 +154,16 @@ In deze oefening leer je onderscheid maken tussen *relatieve* en *absolute paden
 6. Verwijder directory `b/` en daarna `a/` (in twee commando's)
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ rmdir linux/a/b
+    $ rmdir linux/b
     ```
 
 7. Maak met één commando deze directorystructuur aan.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mkdir -p {c/d/,c/e/}
+    ```
+    ```
     $ tree
     .
     └── c
@@ -179,15 +175,15 @@ In deze oefening leer je onderscheid maken tussen *relatieve* en *absolute paden
 8. Verwijder in één commando de directory `c/` en alle onderliggende
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ rm -R c
     ```
 
 9. Maak met één commando deze directorystructuur aan. Het is de bedoeling de opdrachtregel zo kort mogelijk te maken, dus niet alle directories apart opgeven!
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mkdir -p f/{g,h}/i
+    ```
+    ```
     $ tree
     .
     └── f
@@ -206,15 +202,13 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 1. Maak een leeg bestand aan met de naam `file1`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ touch file1
     ```
 
 2. Maak een *verborgen* bestand aan met de naam `hidden`. Verborgen betekent dat je het niet kan zien met een "gewone" `ls`, maar wel met de gepaste optie.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ touch .hidden
     ```
 
 3. Tik volgend commando in, leg uit wat er hier precies gebeurt, wat het effect is.
@@ -223,34 +217,32 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
     $ echo hello world > file2
     ```
 
-    **Antwoord:** 
+    **Antwoord:** Schrijft "Hello world" naar het bestand `file2`
 
 4. Toon de inhoud van `file2`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ cat file2
     ```
 
 5. Kopieer `file1` naar een nieuw bestand `file3` in de huidige directory
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ cp file1 file3
     ```
 
 6. Kopieer `file1` naar de directory `f/` (die zou je nog moeten hebben van vorige oefening)
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mv file1 f
     ```
 
 7. Kopieer `file1` en file2 in één keer naar `f/g/`. Je zou de gegeven situatie moeten krijgen.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ cp file{1,2} f/g
+    ```
+    ```
     $ tree
     .
     ├── f
@@ -269,22 +261,21 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 8. *Hernoem* `file3` naar `file4`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mv file3 file4
     ```
 
 9. Verplaats `file2` naar directory `f/`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mv file2 f/
     ```
 
 10. Verplaats `file1` en `file4` in één keer naar `f/h/`. Je zou de gegeven situatie moeten krijgen.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ mv file{1,4} f/h
+    ```
+    ```
     $ tree
     .
     └── f
@@ -305,8 +296,7 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 11. Kopieer `f/h/`, inclusief de inhoud, naar een nieuwe directory `f/j/`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ cp -R f/h f/j
     ```
 
 ### Pathname expansion (of *file globbing*)
@@ -327,43 +317,37 @@ Toon met `ls` telkens de gevraagde bestanden, niet meer en niet minder.
 1. Alle bestanden die beginnen met `file`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls file*
     ```
 
 2. Alle bestanden die beginnen met `file`, gevolgd door één letterteken (cijfer of letter)
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls file[A-z0-9]
     ```
 
 3. Alle bestanden die beginnen met `file`, gevolgd door één letter, maar geen cijfer
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls file[A-z]
     ```
 
 4. Alle bestanden die beginnen met `file`, gevolgd door één cijfer, maar geen letter
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls file[0-9]
     ```
 
 5. De bestanden `file12` t/m `file16`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls file1[2-6]
     ```
 
 6. Bestandern die beginnen met `file`, *niet* gevolgd door een `1`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ ls file[^1]*
     ```
 
 ### Links
@@ -374,65 +358,67 @@ Maak in de directory `linux/` twee tekstbestanden aan, met naam `tekst1a` en `te
 
     ```
     $ ls -l tekst*
-    UITVOER
     ```
 
 2. Maak een *harde link* aan met naam `tekst1b` die verwijst naar bestand `tekst1a`
+
+    ```
+    $ ln tekst1a tekst1b
+    ```
+
 3. Maak een *symbolische link* aan met naam `tekst2b` die verwijst naar bestand `tekst2a`
+
+    ```
+    $ ln -s tekst2a tekst2b
+    ```
+
 4. Voor het volgende commando uit en geef de uitvoer:
 
     ```
     $ ls -l tekst*
-    UITVOER
     ```
 
 5. Hoe zie je aan de uitvoer van `ls` dat `tekst1b` een harde link is en `tekst2b` een symbolische? Tip: Vergelijk met de uitvoer uit vraag 1!
 
-    **Antwoord**: ...
+    **Antwoord**: Waarde in tweede kolom bij `tekst1b` > 1 => hard link. Naast `tekst2b` staat een `->` => symbolic link
 
 6. Verwijder de oorspronkelijke bestanden, `tekst1a` en `tekst2a`. Maak het commando zo kort mogelijk!
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ rm tekst[12]a
     ```
 
 7. Toon opnieuw de uitvoer van `ls -l tekst*`, en bekijk de inhoud van `tekst1b` en `tekst2b`. Wat valt je op?
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ $ ls -l tekst*
     ```
 
-    **Antwoord**: ...
+    **Antwoord**: Waarde in 2e kolom is terug 1 bij `tekst1b`. Symbolic link `tekst2b` staat in het rood.
 
 ### Bestanden archiveren
 
 1. Creëer in je home-directory een archief `linux.tar.bz2` van de directory `linux/` en alle inhoud.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ tar cjvf linux.tar.bz2 linux
     ```
 
 2. Verwijder nu volledig de directory `linux/`
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ rm -R linux
     ```
 
 3. Toon de inhoud van het archief zonder opnieuw uit te pakken
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ tar -tvf linux.tar.bz2
     ```
 
 4. Pak het archief opnieuw uit in je home-directory.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ tar xvf linux.tar.bz2 linux
     ```
 
