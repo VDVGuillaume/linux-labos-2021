@@ -49,28 +49,28 @@ Maak ook een bestand aan met de naam `autokentekens` met deze inhoud:
 
     | Te kopiëren                              | Commando |
     | :---                                     | :---     |
-    | Huidige regel                            | `yy`      |
-    | Huidige regel en die eronder             | `2yy`      |
-    | Het huidige woord                        | `yw`      |
-    | Het huidige en de twee volgende woorden  | `2yw`      |
-    | Van de cursor tot het einde van de regel | `y$`      |
-    | Tot het einde van de *zin*               | `yas`      |
-    | Tot het einde van de *paragraaf*         | `yap`      |
-    | Alle tekst tussen haakjes `(...)`        | `ya(`      |
+    | Huidige regel                            | `yy`     |
+    | Huidige regel en die eronder             | `2yy`    |
+    | Het huidige woord                        | `yw`     |
+    | Het huidige en de twee volgende woorden  | `2yw`    |
+    | Van de cursor tot het einde van de regel | `y$`     |
+    | Tot het einde van de *zin*               | `yas`    |
+    | Tot het einde van de *paragraaf*         | `yap`    |
+    | Alle tekst tussen haakjes `(...)`        | `yi(`    |
 
 4. Hoe knip je tekst vanuit *normal* mode?
 
     | Te knippen                                  | Commando |
     | :---                                        | :---     |
-    | Huidige regel                               | `dd`      |
-    | Huidige regel en die eronder                | `2dd`      |
-    | Het huidige woord                           | `dw`      |
-    | Het huidige en de twee volgende woorden     | `2dw`      |
+    | Huidige regel                               | `dd`     |
+    | Huidige regel en die eronder                | `2dd`    |
+    | Het huidige woord                           | `dw`     |
+    | Het huidige en de twee volgende woorden     | `2dw`    |
     | Het letterteken op de positie van de cursor | `x`      |
-    | Van de cursor tot het einde van de regel    | `d$`      |
-    | Tot het einde van de *zin*                  | `das`      |
-    | Tot het einde van de *paragraaf*            | `dap`      |
-    | Alle tekst tussen haakjes `(...)`           | `da(`      |
+    | Van de cursor tot het einde van de regel    | `d$`     |
+    | Tot het einde van de *zin*                  | `das`    |
+    | Tot het einde van de *paragraaf*            | `dap`    |
+    | Alle tekst tussen haakjes `(...)`           | `di(`    |
 
 6. Hoe kan je gekopieerde/geknipte tekst plakken?
 
