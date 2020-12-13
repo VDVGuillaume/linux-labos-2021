@@ -31,55 +31,54 @@ Maak ook een bestand aan met de naam `autokentekens` met deze inhoud:
 1. Hoe start je Vi op om deze bestanden aan te maken?
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ vim <bestandsnaam>
     ```
 
 2. Hoe ga je van *normal mode* naar *insert mode*? Geef verschillende manieren:
 
     | Invoegen vanaf                  | Commando |
     | :---                            | :---     |
-    | op de huidige cursorpositie     | `X`      |
-    | rechts van de cursor            | `X`      |
-    | begin van huidige regel         | `X`      |
-    | einde van huidige regel         | `X`      |
-    | regel toevoegen onder deze      | `X`      |
-    | regel toevoegen op huidige lijn | `X`      |
+    | op de huidige cursorpositie     | `i`      |
+    | rechts van de cursor            | `a`      |
+    | begin van huidige regel         | `I`      |
+    | einde van huidige regel         | `A`      |
+    | regel toevoegen onder deze      | `o`      |
+    | regel toevoegen op huidige lijn | `O`      |
 
 3. Hoe kopieer je vanuit *normal mode*?
 
     | Te kopiëren                              | Commando |
     | :---                                     | :---     |
-    | Huidige regel                            | `X`      |
-    | Huidige regel en die eronder             | `X`      |
-    | Het huidige woord                        | `X`      |
-    | Het huidige en de twee volgende woorden  | `X`      |
-    | Van de cursor tot het einde van de regel | `X`      |
-    | Tot het einde van de *zin*               | `X`      |
-    | Tot het einde van de *paragraaf*         | `X`      |
-    | Alle tekst tussen haakjes `(...)`        | `X`      |
+    | Huidige regel                            | `yy`      |
+    | Huidige regel en die eronder             | `2yy`      |
+    | Het huidige woord                        | `yw`      |
+    | Het huidige en de twee volgende woorden  | `2yw`      |
+    | Van de cursor tot het einde van de regel | `y$`      |
+    | Tot het einde van de *zin*               | `yas`      |
+    | Tot het einde van de *paragraaf*         | `yap`      |
+    | Alle tekst tussen haakjes `(...)`        | `ya(`      |
 
 4. Hoe knip je tekst vanuit *normal* mode?
 
     | Te knippen                                  | Commando |
     | :---                                        | :---     |
-    | Huidige regel                               | `X`      |
-    | Huidige regel en die eronder                | `X`      |
-    | Het huidige woord                           | `X`      |
-    | Het huidige en de twee volgende woorden     | `X`      |
-    | Het letterteken op de positie van de cursor | `X`      |
-    | Van de cursor tot het einde van de regel    | `X`      |
-    | Tot het einde van de *zin*                  | `X`      |
-    | Tot het einde van de *paragraaf*            | `X`      |
-    | Alle tekst tussen haakjes `(...)`           | `X`      |
+    | Huidige regel                               | `dd`      |
+    | Huidige regel en die eronder                | `2dd`      |
+    | Het huidige woord                           | `dw`      |
+    | Het huidige en de twee volgende woorden     | `2dw`      |
+    | Het letterteken op de positie van de cursor | `x`      |
+    | Van de cursor tot het einde van de regel    | `d$`      |
+    | Tot het einde van de *zin*                  | `das`      |
+    | Tot het einde van de *paragraaf*            | `dap`      |
+    | Alle tekst tussen haakjes `(...)`           | `da(`      |
 
 6. Hoe kan je gekopieerde/geknipte tekst plakken?
 
 
     | Tekst plakken          | Commando |
     | :---                   | :---     |
-    | Rechts/onder de cursur | `X`      |
-    | Op de cursur           | `X`      |
+    | Rechts/onder de cursur | `p`      |
+    | Op de cursur           | `P`      |
 
 De bedoeling van voorgaande oefening is om een idee te geven van hoe veelzijdig Vi is. Er zijn *veel* commando's, maar er zit een duidelijke logica in. Een voorbeeld is `ci{`: dit staat voor *Change inside braces*. Vim zal links en rechts van de cursor zoeken naar accolades, alle tekst ertussen verwijderen en naar insert mode gaan. Je kan in het commando de `{` vervangen door een ander teken zoals bv. `(`, `"`, `'`, `[`, `<`.
 
@@ -92,14 +91,15 @@ In onderstaande vragen is het telkens de bedoeling één commando te geven om de
 1. Voeg het bestand `landen` en `autokentekens` samen met het commando `join` (zoek de werking ervan op met het man-commando). Het resultaat wordt opgeslagen in het bestand `landenkentekens`.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ join landen autokentekens > landenkentekens
     ```
 
 2. Bekijk de inhoud van `landenkentekens` en controleer of het overeenkomt met de uitvoer hieronder.
 
     ```
-    $ COMMANDO
+    $ cat landenkentekens
+    ```
+    ```
     1 België B
     2 Frankrijk F
     3 Zwitserland CH
@@ -110,14 +110,15 @@ In onderstaande vragen is het telkens de bedoeling één commando te geven om de
 3. Haal uit `landenkentekens` alleen kolom 2 en kolom 3 eruit en sla dit resultaat op als `landenkentekens2`.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ cut -d ' ' -f2,3 landenkentekens > landenkentekens2
     ```
 
 4. Controleer of de inhoud van `landenkentekens2` overeenkomt met de uitvoer hieronder.
 
     ```
-    $ COMMANDO
+    $ cat landenkentekens2
+    ```
+    ```
     België B
     Frankrijk F
     Zwitserland CH
@@ -128,16 +129,19 @@ In onderstaande vragen is het telkens de bedoeling één commando te geven om de
 5. Voeg vanop de command-line Italië en Spanje toe aan het einde van `landenkentekens2` met hun respectievelijke kentekens. Je mag hier voor elk land een apart commando gebruiken.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ echo 'Italië I' >> landenkentekens2
+    $ echo 'Spanje E' >> landenkentekens2
     ```
 
 6. Sorteer `landenkentekens2` alfabetisch op de autokentekens. Sla het bekomen resultaat op in `gesorteerdeautokentekens`. Controleer het resultaat.
 
     ```
-    $ COMMANDO
-    UITVOER
-    $ COMMANDO
+    $ sort -k2 landenkentekens2 > gesorteerdeautokentekens
+    ```
+    ```
+    $ cat gesorteerdeautokentekens
+    ```
+    ```
     België B
     Zwitserland CH
     Duitsland D
@@ -156,7 +160,9 @@ Sommige van onderstaande oefeningen maken gebruik van specifieke tekstbestanden 
 1. Bekijk de uitvoer van het commando `ip a` (opvragen van de IP-adressen van deze host). Filter de IPv4 (niet IPv6) adressen er uit:
 
     ```
-    $ COMMANDO
+    $ ip a | grep -o "inet .*" | cut -d ' ' -f2
+    ```
+    ```
     127.0.0.1/8
     10.0.2.15/24
     192.168.56.101/24
@@ -169,15 +175,16 @@ Deze oefeningen gebeuren met `lorem.txt`
 1. Tel het aantal regels, wooren en tekens in `lorem.txt`
 
     ```
-    $ COMMANDO
-      45  404 2738 lorem.txt
+    $ wc lorem.txt
+    ```
+    ```
+    45  404 2738 lorem.txt
     ```
 
 2. Herformatteer `lorem.txt` zodat elke tekstregel max. 50 lettertekens bevat en nummer daarna elke (niet-lege) regel. Het resultaat wordt weggeschreven in een nieuw bestand, `nlorem.txt`.
 
     ```
-    $ COMMANDO
-    UITVOER
+    $ fmt -w 50 lorem.txt > nlorem.txt
     ```
 
 3. Druk een lijst af van alle individuele woorden in `lorem.txt` (negeer hoofdletters), samen met het aantal keer dat elk woord voorkomt. De lijst is omgekeerd gesorteerd op aantal voorkomens, en dan alfabetisch geordend. Werk stap voor stap:
@@ -187,8 +194,11 @@ Deze oefeningen gebeuren met `lorem.txt`
     - Maak een lijst met voor elk woord het aantal keer dat het voorkomt
     - Sorteer op het aantal voorkomens en behoud de alfabetische sortering van de woorden
 
+    TODO: sorteert niet alfabetisch na voorkomen
     ```
-    $ COMMANDO
+    $ cat lorem.txt | grep -oe [a-Z]* | sort | uniq -ci | sort -nr
+    ```
+    ```
      11 sed 
      10 et 
       8 quis 
@@ -211,7 +221,9 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 1. Schrijf in `users.txt` een gesorteerde lijst weg van gebruikers met een UID strikt groter dan 1000 (tip: gebruik hiervoor `awk`).
 
     ```
-    $ awk -F: '{ if($3 > 1000) print $1}' /etc/passwd | sort > users.txt
+    $ awk -F ':' '{if($3 > 1000) print $1}' /etc/passwd | sort > users.txt
+    ```
+    ```
     $ cat users.txt
     roberts
     ryu
@@ -224,20 +236,24 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 2. Tel het aantal gebruikers in `users.txt`
 
     ```
-    $ wc -l
-    UITVOER
+    $ wc -l users.txt
+    ```
+    ```
+    6 users.txt
     ```
 
 3. Genereer voor elke gebruiker in `users.txt` een nieuw wachtwoord m.h.v. het commando `apg -n AANTAL` en schrijf deze weg in `newpass.txt`. Het aantal gebruikers in `users.txt` wordt berekend in de opdrachtregel.  Tip: gebruik "command substitution," notatie `$(commando)`. Dit zal het gegeven commando uitvoeren en de uitdrukking `$(...)` vervangen door de uitvoer (stdout) ervan.
 
     ```
-    $ apg -n AANTAL > newpass.txt
+    $ apg -n $(wc -l users.txt | cut -d ' ' -f1) > newpass.txt
     ```
 
 4. Maak een tekstbestand `newusers.txt` met daarin de lijst van gebruikers uit `users.txt` en hun overeenkomstige wachtwoord uit `newpass.txt`, gescheiden door een TAB, vb:
 
     ```
     $ paste users.txt newpass.txt > newusers.txt
+    ```
+    ```
     $ cat newusers.txt
     roberts hewpopIrb6
     ryu     vicNimEp
@@ -251,6 +267,8 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 
     ```
     $ awk '{printf ("\"%s\";\"%s\"\n",$1,$2)}' newusers.txt > newusers.csv
+    ```
+    ```
     $ cat newusers.csv
     "roberts";"hewpopIrb6"
     "ryu";"vicNimEp"
@@ -263,7 +281,9 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 6. Druk een lijst af van de gebruikers in `passwd` die Bash als shell hebben, samen met hun UID en home-directory. Sorteer op UID.
 
     ```
-    $ grep 'bin/bash$' /etc/passwd | sort -t: -n -k3 | cut -d: -f1,3,6
+    $ grep 'bin/bash$' /etc/passwd | sort -t ':' -n -k3 | cut -d ':' -f1,3,6
+    ```
+    ```
     root:0:/root
     vagrant:1000:/home/vagrant
     student:1001:/home/student
