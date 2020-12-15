@@ -13,9 +13,9 @@
 
 6. [Labo 6: Variabelen en scripts](labo-6-scripts.md)
 
-7. [Labo 7: Een webserver opzetten](labo-7-webserver.md) (TODO)
+7. [Labo 7: Een webserver opzetten](labo-7-webserver.md)
 
-8. [Labo 8: Complexere scripts](labo-8-complex-scripts.md) (TODO)
+8. [Labo 8: Complexere scripts](labo-8-complex-scripts.md)
 
 
 
