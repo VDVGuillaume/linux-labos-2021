@@ -42,6 +42,64 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
         - er meer dan twee parameters gegeven werden
         - WORDS niet bestaat of niet leesbaar is
     - Tip: met het commando `shuf` kan je de volgorde van lijnen tekst door elkaar schudden.
+
+    **[DISCLAIMER] Is nergens een verbetering van verschenen, maar zou moeten werken** 
+
+    ```bash
+    #!/bin/bash
+
+    N=4
+    WORDS="/usr/share/dict/words"
+
+    # Functions BEGIN
+    usage() {
+        echo "passphrase.sh [N] [WORDS]"
+        echo "N = het aantal woorden in de wachtwoordzin (standaardwaarde = 4)"
+        echo "WORDS = het bestand dat de te gebruiken woordenlijst bevat (standaardwaarde = /usr/share/dict/words)"
+        exit 0
+    }
+
+    dir_is_valid() {
+        if [[ ! -r ${WORDS}  ]]; then
+            echo "${WORDS} bestaat niet of kan niet gelezen worden" >&2
+            exit 1
+        fi
+    }
+
+    generate_passphrase() {
+        for word in $(shuf ${WORDS} | head -n ${N}); do
+            passphrase="${passphrase} ${word}"
+        done
+
+        echo "${passphrase}"
+    }
+
+    handle_passphrase() {
+        case $# in
+            0) generate_passphrase;;
+
+            1) N="$1"
+                generate_passphrase;;
+
+            2) N="$1"
+                WORDS="$2"
+                dir_is_valid
+                generate_passphrase;;
+
+            *) echo "Meer dan 2 argumenten " >&2
+                exit 1;;
+        esac
+    }
+    # Functions END
+
+
+    case "$1" in
+        -h | -? | --help) usage;;
+
+        *) handle_passphrase "$@";;
+    esac
+    ```
+
 2. Schrijf een script om een backup te maken van de gegeven directory, meer bepaald een Tar-archief gecomprimeerd met bzip2.
     - Het archief krijgt als naam DIRECTORY-TIMESTAMP.tar.bzip2 met:
         - DIRECTORY = de naam van de directory waarvan je een backup maakt
@@ -57,5 +115,52 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
         - er teveel argumenten gegeven worden
         - de directory waarvan een backup gemaakt moet worden niet bestaat
         - de directory waar de backup naartoe geschreven moet worden niet bestaat
+
+    **[DISCLAIMER] Is nergens een verbetering van verschenen, maar zou moeten werken** 
+
+    ```bash
+    #!/bin/bash
+
+    DOEL="."
+
+    # Functions BEGIN
+    usage() {
+        echo "backup.sh [OPTIES] [DIR]"
+        exit 0
+    }
+
+    handle_backup() {
+        DATE=$(date +%y%y%m%d%H%M)
+        DIRNAME=$(basename ${DIR})
+        
+        if [ ! -d $DOEL ]; then
+            echo "${DOEL} bestaat niet" >&2
+            exit 1
+        fi
+
+        if [ ! -d $DIR ]; then
+            echo "${DIR} bestaat niet" >&2
+            exit 1
+        fi
+
+        tar cfj "${DIRNAME}-${DATE}.tar.bzip2" $DIR
+    }
+    # Functions END
+
+
+    case "$1" in
+        -h | -? | --help) 
+            usage;;
+
+        -d | --destination)
+            DOEL=$2
+            DIR=$3
+            handle_backup;;
+
+        *)
+            DIR=$1
+            handle_backup;;
+    esac
+    ```
 
 ## Gebruikte bronnen
