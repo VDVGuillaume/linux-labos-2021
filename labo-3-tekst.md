@@ -221,7 +221,7 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 1. Schrijf in `users.txt` een gesorteerde lijst weg van gebruikers met een UID strikt groter dan 1000 (tip: gebruik hiervoor `awk`).
 
     ```
-    $ awk -F ':' '{if($3 > 1000) print $1}' /etc/passwd | sort > users.txt
+    $ awk -F ':' '{if($3 -gt 1000) print $1}' /etc/passwd | sort > users.txt
     ```
     ```
     $ cat users.txt
