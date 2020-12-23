@@ -9,7 +9,7 @@
 
 4. [Labo 4: Intro scripting](labo-4-intro-scripts.md)
 
-5. [Labo 5: Bestandspermissies](labo-5-gebruikers-bestandspermissies.md) (TODO)
+5. [Labo 5: Bestandspermissies](labo-5-gebruikers-bestandspermissies.md)
 
 6. [Labo 6: Variabelen en scripts](labo-6-scripts.md)
 
