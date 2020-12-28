@@ -121,7 +121,7 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
     ```bash
     #!/bin/bash
 
-    DOEL="."
+    DOEL="/tmp"
 
     # Functions BEGIN
     usage() {
@@ -143,7 +143,7 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
             exit 1
         fi
 
-        tar cfj "${DIRNAME}-${DATE}.tar.bzip2" $DIR
+        tar cfj "${DOEL}/${DIRNAME}-${DATE}.tar.bzip2" $DIR
     }
     # Functions END
 
@@ -158,8 +158,13 @@ De unit tests van de oefeningen worden in volgorde uitgevoerd. Zolang er nog fou
             handle_backup;;
 
         *)
-            DIR=$1
-            handle_backup;;
+            if [ $# -eq 1 ]; then
+                DIR=$1
+                handle_backup
+            else
+                usage
+            fi
+            ;;
     esac
     ```
 
