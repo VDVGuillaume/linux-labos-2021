@@ -221,7 +221,7 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 1. Schrijf in `users.txt` een gesorteerde lijst weg van gebruikers met een UID strikt groter dan 1000 (tip: gebruik hiervoor `awk`).
 
     ```
-    $ awk -F ':' '{if($3 -gt 1000) print $1}' /etc/passwd | sort > users.txt
+    $ awk -F ':' '{if($3 > 1000) print $1}' passwd | sort > users.txt
     ```
     ```
     $ cat users.txt
@@ -281,7 +281,7 @@ Vele tekstbestanden zijn gestructureerd als tabellen, bv. CSV (comma-separated v
 6. Druk een lijst af van de gebruikers in `passwd` die Bash als shell hebben, samen met hun UID en home-directory. Sorteer op UID.
 
     ```
-    $ grep 'bin/bash$' /etc/passwd | sort -t ':' -n -k3 | cut -d ':' -f1,3,6
+    $ grep 'bin/bash$' passwd | sort -t ':' -n -k3 | cut -d ':' -f1,3,6
     ```
     ```
     root:0:/root
